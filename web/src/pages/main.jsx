@@ -1,11 +1,15 @@
-import React from "react"
+import React from "react";
+import Header from "../component/Header";
+import './Main.css';
 
-const Main =() =>{
-    return (
-        <>
-            <p>test</p>
-        </>
-    )
+const Main = () => {
+	return(
+		<>
+			<Header/>
+			<p>
+			</p>
+		</>
+	)
 }
 
-export default Main()
+export default Main;
