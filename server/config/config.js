@@ -2,7 +2,6 @@ require("dotenv").config();
 const env = process.env;
 
 const development = {
-  // 사용할 부분
   username: env.DB_USER,
   password: env.DB_PASSWORD,
   database: env.DB_DATABASE,
