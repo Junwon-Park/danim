@@ -39,12 +39,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      account: DataTypes.STRING,
-      password: DataTypes.STRING,
-      region_1: DataTypes.STRING,
-      region_2: DataTypes.STRING,
-      user_name: DataTypes.STRING,
-      user_phoneNumber: DataTypes.STRING,
+      account: { type: DataTypes.STRING(20), allowNull: false },
+      password: { type: DataTypes.STRING(30), allowNull: false },
+      region_1: { type: DataTypes.STRING(50), allowNull: false },
+      region_2: { type: DataTypes.STRING(50), allowNull: false },
+      user_name: { type: DataTypes.STRING(10), allowNull: false },
+      user_phoneNumber: { type: DataTypes.STRING(20), allowNull: false },
     },
     {
       sequelize,
