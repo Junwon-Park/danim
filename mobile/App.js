@@ -5,9 +5,9 @@ import SignInScreen from './src/screens/SignInScreen/SignInScreens';
 /** root component */
 const App = () => {
   return (
-    <View style={styles.container}>
-      <SignInScreen/>
-    </View>
+    <Stack.NavigationContainer>
+
+    </Stack.NavigationContainer>
   );
 }
 
