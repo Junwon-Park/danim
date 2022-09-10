@@ -2,7 +2,7 @@
 // 사진은 review_images 테이블에 저장
 
 const uploadReviewController = async (req, res) => {
-  console.log(req.file.location);
+  console.log(req.files); // router에서 single로 하면 req.file, router에서 array로 하면 req.files에 배열 형태로 온다.
   res.send("Good job!");
 };
 
