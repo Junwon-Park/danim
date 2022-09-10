@@ -8,7 +8,7 @@ const helmet = require("helmet");
 const { config } = require("./serverConfig");
 const PORT = config.PORT;
 
-const testRouter = require("./router/test/testRouter.js");
+const reviewRouter = require("./router/review/reviewRouter.js");
 
 app.use(morgan("tiny"));
 app.use(helmet());
@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
   res.status(200).send("connect!!!");
 });
 
-app.use("/test", testRouter);
+app.use("/review", reviewRouter);
 
 server = app.listen(PORT, () => {
   console.log(`HTTP server running on port ${PORT} successfully!!!`);
