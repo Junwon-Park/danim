@@ -29,10 +29,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Traveled_records.init(
     {
-      place_id: DataTypes.INTEGER,
-      user_id: DataTypes.INTEGER,
-      travel_infomation: DataTypes.STRING,
-      traveled_date: DataTypes.DATE,
+      place_id: { type: DataTypes.BIGINT, allowNull: false },
+      user_id: { type: DataTypes.BIGINT, allowNull: false },
+      travel_infomation: DataTypes.TEXT,
+      traveled_date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
     },
     {
       sequelize,

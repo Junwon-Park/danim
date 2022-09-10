@@ -19,12 +19,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Location_validations.init(
     {
-      user_id: DataTypes.INTEGER,
-      geo_x: DataTypes.STRING,
-      geo_y: DataTypes.STRING,
-      location_address: DataTypes.STRING,
-      location_keyword: DataTypes.STRING,
-      validated: DataTypes.STRING,
+      user_id: { type: DataTypes.BIGINT, allowNull: false },
+      geo_x: { type: DataTypes.STRING(20), allowNull: false },
+      geo_y: { type: DataTypes.STRING(20), allowNull: false },
+      location_address: DataTypes.STRING(30),
+      validated: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

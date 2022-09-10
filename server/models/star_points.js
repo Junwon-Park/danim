@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Star_points.init(
     {
-      record_id: DataTypes.INTEGER,
-      point: DataTypes.INTEGER,
+      record_id: { type: DataTypes.BIGINT, allowNull: false },
+      point: { type: DataTypes.INTEGER(5), allowNull: false, defaultValue: 0 },
     },
     {
       sequelize,

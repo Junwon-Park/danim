@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Reports.init(
     {
-      review_id: DataTypes.INTEGER,
-      report_title: DataTypes.STRING,
-      report_context: DataTypes.STRING,
+      review_id: { type: DataTypes.BIGINT, allowNull: false },
+      report_title: { type: DataTypes.STRING(50), allowNull: false },
+      report_context: { type: DataTypes.TEXT, allowNull: false },
     },
     {
       sequelize,

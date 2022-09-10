@@ -19,8 +19,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Level.init(
     {
-      user_id: DataTypes.INTEGER,
-      user_level: DataTypes.INTEGER,
+      user_id: { type: DataTypes.BIGINT, allowNull: false },
+      user_level: {
+        type: DataTypes.INTEGER(10),
+        allowNull: false,
+        defaultValue: 0,
+      },
     },
     {
       sequelize,

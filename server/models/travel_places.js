@@ -27,11 +27,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   Travel_places.init(
     {
-      place_name: DataTypes.STRING,
-      place_region1: DataTypes.STRING,
-      place_region2: DataTypes.STRING,
-      place_region3: DataTypes.STRING,
-      issued_place: DataTypes.STRING,
+      place_name: DataTypes.STRING(10),
+      place_region1: { type: DataTypes.STRING(10), allowNull: false },
+      place_region2: { type: DataTypes.STRING(10), allowNull: false },
+      place_region3: DataTypes.STRING(35),
+      issued_place: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      location_keyword: DataTypes.STRING(50),
     },
     {
       sequelize,

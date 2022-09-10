@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Place_images.init(
     {
-      place_id: DataTypes.INTEGER,
-      place_image: DataTypes.STRING,
+      place_id: { type: DataTypes.BIGINT, allowNull: false },
+      place_image: DataTypes.STRING(100),
     },
     {
       sequelize,

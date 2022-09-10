@@ -6,16 +6,19 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       review_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        allowNull: false,
       },
       report_title: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       report_context: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

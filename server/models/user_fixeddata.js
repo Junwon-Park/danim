@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   User_fixedData.init(
     {
-      user_id: DataTypes.INTEGER,
-      user_age: DataTypes.INTEGER,
-      user_sex: DataTypes.STRING,
-      user_mbti: DataTypes.STRING,
+      user_id: { type: DataTypes.BIGINT, allowNull: false },
+      user_age: { type: DataTypes.STRING(5), allowNull: false },
+      user_sex: { type: DataTypes.STRING(5), allowNull: false },
+      user_mbti: { type: DataTypes.STRING(10), allowNull: false },
     },
     {
       sequelize,

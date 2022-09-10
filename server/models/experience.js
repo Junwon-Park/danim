@@ -19,8 +19,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Experience.init(
     {
-      user_id: DataTypes.INTEGER,
-      user_exp: DataTypes.INTEGER,
+      user_id: { type: DataTypes.BIGINT, allowNull: false },
+      user_exp: {
+        type: DataTypes.INTEGER(5),
+        allowNull: false,
+        defaultValue: 0,
+      },
     },
     {
       sequelize,

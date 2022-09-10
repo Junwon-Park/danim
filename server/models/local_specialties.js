@@ -29,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Local_specialties.init(
     {
-      place_id: DataTypes.INTEGER,
-      specialty_name: DataTypes.STRING,
-      specialty_description: DataTypes.STRING,
+      place_id: { type: DataTypes.BIGINT, allowNull: false },
+      specialty_name: { type: DataTypes.STRING(20), allowNull: false },
+      specialty_description: { type: DataTypes.TEXT, allowNull: false },
     },
     {
       sequelize,

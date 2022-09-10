@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Sellers.init(
     {
-      specialty_id: DataTypes.INTEGER,
-      seller_mutual: DataTypes.STRING,
-      phone_number: DataTypes.STRING,
-      sales_url: DataTypes.STRING,
-      seller_address: DataTypes.STRING,
+      specialty_id: { type: DataTypes.BIGINT, allowNull: false },
+      seller_mutual: { type: DataTypes.STRING(20), allowNull: false },
+      phone_number: { type: DataTypes.STRING(20), allowNull: false },
+      sales_url: DataTypes.STRING(100),
+      seller_address: { type: DataTypes.STRING(50), allowNull: false },
     },
     {
       sequelize,

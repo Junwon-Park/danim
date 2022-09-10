@@ -6,22 +6,22 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       user_id: {
-        type: Sequelize.INTEGER(20),
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
       user_age: {
-        type: Sequelize.INTEGER(30),
+        type: Sequelize.STRING(5),
         allowNull: false,
       },
       user_sex: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(5),
         allowNull: false,
       },
       user_mbti: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(10),
         allowNull: false,
       },
       createdAt: {

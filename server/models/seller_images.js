@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Seller_images.init(
     {
-      seller_id: DataTypes.INTEGER,
-      product_image: DataTypes.STRING,
+      seller_id: { type: DataTypes.BIGINT, allowNull: false },
+      product_image: DataTypes.STRING(20),
     },
     {
       sequelize,

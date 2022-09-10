@@ -6,19 +6,23 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       place_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        allowNull: false,
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        allowNull: false,
       },
       travel_infomation: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       traveled_date: {
         type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW,
       },
     });
   },

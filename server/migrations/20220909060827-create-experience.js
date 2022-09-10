@@ -6,15 +6,16 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       user_id: {
-        type: Sequelize.INTEGER(20),
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
       user_exp: {
-        type: Sequelize.INTEGER(30),
+        type: Sequelize.INTEGER(5),
         allowNull: false,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,
