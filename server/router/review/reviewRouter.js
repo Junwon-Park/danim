@@ -7,6 +7,7 @@ const {
 
 const upload = require("../../middleware/review/uploadImage.js");
 
-router.post("/", upload.array("image", 4), uploadReviewController);
+router.post("/createReview", upload.array("image", 4), uploadReviewController);
+// router.get("/reviewDetail", upload.array("image", 4), uploadReviewController);
 
 module.exports = router;

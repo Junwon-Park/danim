@@ -1,30 +1,30 @@
-require("dotenv").config();
-const env = process.env;
+const { config } = require("../serverConfig.js");
 
 const development = {
-  username: env.DB_USER,
-  password: env.DB_PASSWORD,
-  database: env.DB_DATABASE,
-  host: env.DB_HOST,
-  dialect: env.DB_RDBMS,
+  username: config.db.user,
+  password: config.db.password,
+  database: config.db.database,
+  host: config.db.host,
+  dialect: config.db.rdbms,
+  timezone: "Asia/Seoul",
 };
 
 const production = {
-  username: env.MYSQL_USERNAME,
-  password: env.MYSQL_PASSWORD,
-  database: env.MYSQL_DATABASE,
-  host: env.MYSQL_HOST,
-  dialect: env.MYSQL_DIALECT,
-  port: env.MYSQL_PORT,
+  username: config.db.user,
+  password: config.db.password,
+  database: config.db.database,
+  host: config.db.host,
+  dialect: config.db.rdbms,
+  timezone: "Asia/Seoul",
 };
 
 const test = {
-  username: env.MYSQL_USERNAME,
-  password: env.MYSQL_PASSWORD,
-  database: env.MYSQL_DATABASE_TEST,
-  host: env.MYSQL_HOST,
-  dialect: env.MYSQL_DIALECT,
-  port: env.MYSQL_PORT,
+  username: config.db.user,
+  password: config.db.password,
+  database: config.db.database,
+  host: config.db.host,
+  dialect: config.db.rdbms,
+  timezone: "Asia/Seoul",
 };
 
 module.exports = { development, production, test };

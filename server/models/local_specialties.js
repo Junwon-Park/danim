@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: "id",
         foreignKey: "specialty_id",
       });
-      models.Local_specialties.hasMany(models.specialty_images, {
+      models.Local_specialties.hasMany(models.Specialty_images, {
         sourceKey: "id",
         foreignKey: "specialty_id",
       });

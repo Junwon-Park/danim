@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       review_image: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.TEXT,
       },
       review_description: {
         type: Sequelize.TEXT,
