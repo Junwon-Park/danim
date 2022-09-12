@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { StyleSheet, View, Alert, ScrollView } from "react-native";
+import { StyleSheet, View, Alert, ScrollView, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios";
 
@@ -19,7 +19,6 @@ const defaultInputConfig = {
 const WriteReviewScreen = ({ route, navigation }) => {
   // State
   const [selectedImages, setSelectedImages] = useState([]);
-  // const image = require("../../../assets/designImages/react-native.png");
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -68,24 +67,31 @@ const WriteReviewScreen = ({ route, navigation }) => {
     );
   };
 
-  const uploadReviewHandler = () => {
-    // 선택한 Image와 Text 모두 Server의 Review API로 전송
+  const uploadReviewHandler = async () => {
     console.log("Upload Review");
     const headers = {
       "Content-Type": "multipart/form-data",
     };
     const formdata = new FormData();
-    formdata.append("image", selectedImages[0].uri);
-    formdata.append("image", selectedImages[1].uri);
+    const data = { uri: "", name: "", type: "" };
+    selectedImages.forEach((element) => {
+      (data.uri = element.uri),
+        (data.name = element.uri.split("/").pop()),
+        (data.type = "image/jpeg"),
+        formdata.append("image", data);
+    });
     formdata.append("user_id", 1);
     formdata.append("description", "React Native");
+
     const restApi = "http://10.0.2.2:8080/review/createReview";
-    axios
-      .post(restApi, formdata, { headers: headers })
-      .then((response) => {
-        console.log(response);
+
+    const result = await axios
+      .post(restApi, formdata, {
+        headers,
+        transformRequest: (formData) => formData,
       })
-      .catch((error) => console.error(error));
+      .catch((err) => console.error(err));
+    console.log(result.data.data); // DB Data Response
   };
 
   return (

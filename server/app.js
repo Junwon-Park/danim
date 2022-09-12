@@ -10,9 +10,6 @@ const PORT = config.PORT;
 
 const reviewRouter = require("./router/review/reviewRouter.js");
 
-app.use(morgan("tiny"));
-app.use(helmet());
-
 // const whiteListByCors = [
 //   'https://aws.amazon.com'
 // ];
@@ -36,6 +33,10 @@ const devCors = {
   optionsSuccessStatus: 200,
 };
 app.use(cors(devCors));
+app.use(morgan("tiny"));
+app.use(helmet());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   console.log(req.headers);
@@ -43,10 +44,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/review", reviewRouter);
-// app.use("/review", (req, res) => {
-//   console.log(req.body);
-//   res.json({ data: "good" });
-// });
 
 server = app.listen(PORT, () => {
   console.log(`HTTP server running on port ${PORT} successfully!!!`);
