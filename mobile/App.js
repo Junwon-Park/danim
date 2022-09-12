@@ -25,7 +25,13 @@ const ReviewStackNavigator = () => {
         headerTitleStyle: { fontWeight: "bold", fontSize: 28 },
       }}
     >
-      <Stack.Screen name="allReviewList" component={AllReviewListScreen} />
+      <Stack.Screen
+        name="allReviewList"
+        component={AllReviewListScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
       <Stack.Screen name="writeReview" component={WriteReviewScreen} />
       <Stack.Screen name="reviewDetail" component={ReviewDetailScreen} />
     </Stack.Navigator>
@@ -36,7 +42,7 @@ const ReviewStackNavigator = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator sceneContainerStyle={{ backgroundColor: "#ffffff" }}>
         <Tab.Screen
           name="Home"
           component={MainScreen}
@@ -60,14 +66,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default App;

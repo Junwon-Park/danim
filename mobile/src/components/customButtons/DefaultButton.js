@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     padding: 8,
+    marginTop: 40,
+    width: "100%",
   },
   innerContainer: {},
   pressable: {

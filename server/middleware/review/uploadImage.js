@@ -2,7 +2,7 @@
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const aws = require("aws-sdk");
-aws.config.loadFromPath(__dirname + "/../../uploadConfig/s3.json"); // ! 되는지 확인
+aws.config.loadFromPath(__dirname + "/../../uploadConfig/s3.json");
 
 require("dotenv").config();
 const env = process.env;
@@ -15,6 +15,8 @@ const upload = multer({
     acl: "public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (req, file, cb) {
+      console.log("req!!!", req.body);
+      console.log("File!!!", file);
       cb(null, `reviews/${Date.now()}_${file.originalname}`);
       // file.originalname -> 클라이언트가 보낸 요청의 해당 파일의 이름이 넘어온 것이다.
       // reviews를 붙이면 S3에 reviews 디렉토리에 저장하고 디렉토리가 없다면 자동으로 생성하고 해당 디렉토리 안에 파일을 저장한다.

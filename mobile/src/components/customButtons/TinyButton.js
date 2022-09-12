@@ -1,11 +1,21 @@
 import { Pressable, StyleSheet, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
-const TinyButton = ({ onPress }) => {
+const TinyButton = ({ type, onPress }) => {
+  let Icon = <Feather name="camera" size={32} color="black" />;
+  if (type === "gallery")
+    Icon = (
+      <MaterialCommunityIcons
+        name="view-gallery-outline"
+        size={32}
+        color="black"
+      />
+    );
+
   return (
     <View style={styles.container}>
       <Pressable android_ripple={{ color: "#cccccc" }} onPress={onPress}>
-        <Feather name="camera" size={32} color="black" />
+        {Icon}
       </Pressable>
     </View>
   );
@@ -18,6 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     overflow: "hidden",
     alignItems: "center",
+    marginRight: 10,
   },
 });
 

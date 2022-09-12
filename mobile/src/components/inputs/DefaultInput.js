@@ -12,7 +12,6 @@ const DefaultInput = ({ label, defaultInputConfig }) => {
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {},
   innerContainer: {
     height: 200,
     borderColor: "black",
@@ -28,6 +27,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: "bold",
+    marginTop: 20,
   },
 });
 

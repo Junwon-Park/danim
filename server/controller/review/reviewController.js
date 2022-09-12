@@ -6,29 +6,33 @@ const uploadReviewController = async (req, res) => {
   const reviewImageArray = req.files;
   const imageUrlArray = [];
 
+  console.log("reviewData", reviewData);
+  console.log('"reviewData"', reviewImageArray);
+
   reviewImageArray.forEach((imgObj) => {
+    console.log("Obaject", imgObj);
     imageUrlArray.push(imgObj.location);
   });
 
-  const imageUrls = imageUrlArray.join(",");
+  // const imageUrls = imageUrlArray.join(",");
 
-  const review = await Reviews.create({
-    user_id: Number(reviewData.user_id),
-    review_image: imageUrls,
-    review_description: reviewData.description,
-  });
+  // const review = await Reviews.create({
+  //   user_id: Number(reviewData.user_id),
+  //   review_image: imageUrls,
+  //   review_description: reviewData.description,
+  // });
 
-  console.log("review!!!!", review);
+  // console.log("review!!!!", review);
 
-  const { id, user_id, review_image, review_description } = review;
-  const splitedImageUrl = review_image.split(",");
+  // const { id, user_id, review_image, review_description } = review;
+  // const splitedImageUrl = review_image.split(",");
 
-  // const findRievew = await Reviews.findByPk(1);
+  // // const findRievew = await Reviews.findByPk(1);
 
-  // console.log("findRievew!!", findRievew.review_image.split(","));
-  res.json({
-    data: { id, user_id, review_image: splitedImageUrl, review_description },
-  });
+  // // console.log("findRievew!!", findRievew.review_image.split(","));
+  // res.json({
+  //   data: { id, user_id, review_image: splitedImageUrl, review_description },
+  // });
 };
 
 module.exports = { uploadReviewController };

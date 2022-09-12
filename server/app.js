@@ -43,6 +43,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/review", reviewRouter);
+// app.use("/review", (req, res) => {
+//   console.log(req.body);
+//   res.json({ data: "good" });
+// });
 
 server = app.listen(PORT, () => {
   console.log(`HTTP server running on port ${PORT} successfully!!!`);
