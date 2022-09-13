@@ -1,40 +1,60 @@
 import { useLayoutEffect } from "react";
-import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Dimensions,
+  Image,
+} from "react-native";
+import DefaultButton from "../../components/customButtons/DefaultButton";
 
 const { width, height } = Dimensions.get("screen");
 
 const ReviewDetailScreen = ({ route, navigation }) => {
-  const itemId = route.params.id;
-  const item = route.params.item;
+  const imageArray = route.params.images;
+  const reviewText = route.params.text;
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: `Title ${itemId}`,
+      title: `Title`,
+      contentStyle: {
+        backgroundColor: "white",
+      },
     });
   }, [navigation]);
 
   const renderCarouselHandler = (itemData) => {
     return (
       <View>
-        <View
-          style={[styles.imageContainer, { backgroundColor: itemData.item }]}
-        >
-          <Text>{itemData.item}</Text>
+        <View style={[styles.imageContainer]}>
+          <Image style={styles.image} source={{ uri: itemData.item }} />
         </View>
       </View>
     );
   };
+
+  const goReviewListHandler = () => {
+    navigation.navigate("allReviewList");
+  };
+
   return (
     <View style={styles.listContainer}>
       <FlatList
-        data={item.image}
+        data={imageArray}
         horizontal
         pagingEnabled
-        keyExtractor={(item) => item}
         renderItem={renderCarouselHandler}
       />
       <View style={styles.textContainer}>
-        <Text>{item.text}</Text>
+        <Text>{reviewText}</Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <DefaultButton
+          width={{ width: "90%" }}
+          title={"목록으로 이동"}
+          onPress={goReviewListHandler}
+        />
       </View>
     </View>
   );
@@ -42,18 +62,31 @@ const ReviewDetailScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    flex: 1,
+    width: "100%",
+    height: "100%",
   },
   imageContainer: {
     width,
-    height: 200,
+    height: 300,
+  },
+  textContainer: {
+    height: "30%",
+    marginHorizontal: 18,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+  buttonContainer: {
+    width: "100%",
+    height: 80,
+    marginVertical: 30,
     justifyContent: "center",
     alignItems: "center",
   },
-  textContainer: {
-    marginVertical: 24,
-    height: "60%",
-    marginHorizontal: 18,
+  button: {
+    width: "80%",
+    height: 100,
   },
 });
 

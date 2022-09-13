@@ -1,16 +1,14 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { View, StyleSheet, FlatList, Pressable } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 // Componenets
 import ReviewItem from "../../components/cards/ReviewItem";
+import axios from "axios";
 
 const AllReviewListScreen = ({ route, navigation }) => {
   // Test
-  const [reviewDatas, setReviewDatas] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-  ]);
+  const [reviewDatas, setReviewDatas] = useState([]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -39,16 +37,35 @@ const AllReviewListScreen = ({ route, navigation }) => {
     });
   }, [navigation]);
 
+  const restApi = "http://10.0.2.2:8080/review/getAllReviews";
+  const initRequest = async () => {
+    const response = await axios.get(restApi);
+    setReviewDatas(response.data.data);
+  };
+
+  // Get all reviews init screen
+  useEffect(() => {
+    initRequest();
+  }, []);
+
   const renderReviewItemHandler = (itemData) => {
+    const item = itemData.item;
+    const imageList = item.review_image.split(","); // Array
+    const reviewText = item.review_description;
+
     const reviewItemPressedHandler = () => {
-      // 여기에서 해당 리뷰 데이터 서버에서 받아와 params로 넘겨야 함
       navigation.navigate("reviewDetail", {
-        id: itemData.item,
-        item: { image: ["#f5428d", "#41d95d", "#f5d142"], text: "와우~~" },
+        images: imageList,
+        text: reviewText,
       });
     };
+
     return (
-      <ReviewItem item={itemData.item} onPress={reviewItemPressedHandler} />
+      <ReviewItem
+        image={imageList}
+        text={reviewText}
+        onPress={reviewItemPressedHandler}
+      />
     );
   };
 
@@ -56,11 +73,7 @@ const AllReviewListScreen = ({ route, navigation }) => {
     <>
       <View style={styles.scrollContainer}>
         <View>
-          <FlatList
-            data={reviewDatas}
-            renderItem={renderReviewItemHandler}
-            keyExtractor={(item) => item}
-          />
+          <FlatList data={reviewDatas} renderItem={renderReviewItemHandler} />
         </View>
       </View>
     </>

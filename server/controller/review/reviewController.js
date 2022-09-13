@@ -1,7 +1,6 @@
 const { Reviews } = require("../../models");
 
 const uploadReviewController = async (req, res) => {
-  // console.log(req.files); // router에서 single로 하면 req.file, router에서 array로 하면 req.files에 배열 형태로 온다.
   const reviewData = req.body;
   const reviewImageArray = req.files;
   const imageUrlArray = [];
@@ -18,8 +17,6 @@ const uploadReviewController = async (req, res) => {
     review_description: reviewData.description,
   });
 
-  console.log("review!!!!", review);
-
   const { id, user_id, review_image, review_description } = review;
   const splitedImageUrl = review_image.split(",");
 
@@ -31,4 +28,11 @@ const uploadReviewController = async (req, res) => {
   });
 };
 
-module.exports = { uploadReviewController };
+const getAllReviewController = async (req, res) => {
+  const AllReviews = await Reviews.findAll();
+
+  console.log(AllReviews);
+  res.json({ data: AllReviews });
+};
+
+module.exports = { uploadReviewController, getAllReviewController };

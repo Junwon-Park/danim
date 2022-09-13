@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { StyleSheet, View, Alert, ScrollView, Image } from "react-native";
+import { CommonActions, StackActions } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios";
 
@@ -19,7 +20,8 @@ const defaultInputConfig = {
 const WriteReviewScreen = ({ route, navigation }) => {
   // State
   const [selectedImages, setSelectedImages] = useState([]);
-
+  const [reviewDescription, setReviewDescription] = useState("");
+  console.log(reviewDescription);
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "리뷰 쓰기",
@@ -36,6 +38,10 @@ const WriteReviewScreen = ({ route, navigation }) => {
       setSelectedImages([]);
     }
   }, [selectedImages]);
+
+  const reviewDescriptionHandler = (text) => {
+    setReviewDescription(text);
+  };
 
   const imageButtonHandler = async () => {
     const permissionResult = ImagePicker.requestCameraPermissionsAsync();
@@ -73,15 +79,15 @@ const WriteReviewScreen = ({ route, navigation }) => {
       "Content-Type": "multipart/form-data",
     };
     const formdata = new FormData();
-    const data = { uri: "", name: "", type: "" };
     selectedImages.forEach((element) => {
-      (data.uri = element.uri),
-        (data.name = element.uri.split("/").pop()),
-        (data.type = "image/jpeg"),
-        formdata.append("image", data);
+      const data = { uri: "", name: "", type: "" };
+      data.uri = element.uri;
+      data.name = element.uri.split("/").pop();
+      data.type = "image/jpeg";
+      formdata.append("image", data);
     });
-    formdata.append("user_id", 1);
-    formdata.append("description", "React Native");
+    formdata.append("user_id", 2);
+    formdata.append("description", reviewDescription);
 
     const restApi = "http://10.0.2.2:8080/review/createReview";
 
@@ -91,7 +97,20 @@ const WriteReviewScreen = ({ route, navigation }) => {
         transformRequest: (formData) => formData,
       })
       .catch((err) => console.error(err));
-    console.log(result.data.data); // DB Data Response
+    console.log("Result data!!!!", result.data.data);
+    const userData = result.data.data;
+    navigation.reset({
+      routes: [
+        {
+          name: "reviewDetail",
+          params: {
+            images: userData.review_image,
+            text: userData.review_description,
+          },
+        },
+      ],
+    });
+    // navigation.navigate("reviewDetail", { userData: result.data.data });
   };
 
   return (
@@ -104,8 +123,14 @@ const WriteReviewScreen = ({ route, navigation }) => {
       <DefaultInput
         label={"내용"}
         defaultInputConfig={{ ...defaultInputConfig }}
+        onChangeText={reviewDescriptionHandler}
+        value={reviewDescription}
       />
-      <DefaultButton title={"리뷰 등록하기"} onPress={uploadReviewHandler} />
+      <DefaultButton
+        width={{ width: "100%" }}
+        title={"리뷰 등록하기"}
+        onPress={uploadReviewHandler}
+      />
     </ScrollView>
   );
 };

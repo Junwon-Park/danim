@@ -1,6 +1,12 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 
-const ReviewItem = ({ item, onPress }) => {
+const ReviewItem = ({ image, text, onPress }) => {
+  console.log("Image!!!!", image[0]);
+  const imageArray = image[0] ? (
+    <Image style={styles.image} source={{ uri: image[0] }} />
+  ) : (
+    <Text>Image</Text>
+  );
   return (
     <View style={styles.itemContainer}>
       <Pressable
@@ -8,11 +14,9 @@ const ReviewItem = ({ item, onPress }) => {
         onPress={onPress}
         android_ripple={{ color: "#cccccc" }}
       >
-        <View style={styles.imageContainer}>
-          <Text>{item}</Text>
-        </View>
+        <View style={styles.imageContainer}>{imageArray}</View>
         <View style={styles.textContainer}>
-          <Text>Text</Text>
+          <Text>{text === "" ? "TEST" : text}</Text>
         </View>
       </Pressable>
     </View>
@@ -42,10 +46,12 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     width: "100%",
-    backgroundColor: "#ccc",
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
+    borderTopWidth: 1,
   },
+  image: { width: "100%", height: "100%" },
 });
 
 export default ReviewItem;

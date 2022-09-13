@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
 
-const DefaultButton = ({ title, onPress }) => {
+const DefaultButton = ({ width, title, onPress }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, width]}>
       <View style={styles.textContainer}>
         <Pressable
           style={styles.pressable}
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 8,
     marginTop: 40,
-    width: "100%",
   },
   innerContainer: {},
   pressable: {

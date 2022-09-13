@@ -7,13 +7,11 @@ const SelectedImageList = ({ selectedImages }) => {
       <Text style={styles.text}>파일</Text>
       <View style={styles.container}>
         {selectedImages.map((el) => {
-          console.log(el);
           const filename = el.uri.split("/").pop();
-          console.log(filename);
           return (
             <Text
-              key={el.assetId}
-              style={{ fontSize: 12, marginTop: 10, marginLeft: 10 }}
+              key={`${el.uri.split("/").pop()}${Math.random() * 94503}`}
+              style={styles.selectedFileText}
             >
               {el ? filename : ""}
             </Text>
@@ -38,6 +36,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 20,
   },
+  selectedFileText: { fontSize: 12, marginTop: 10, marginLeft: 10 },
 });
 
 export default SelectedImageList;

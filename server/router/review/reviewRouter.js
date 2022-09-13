@@ -3,11 +3,12 @@ const router = express.Router();
 
 const {
   uploadReviewController,
+  getAllReviewController,
 } = require("../../controller/review/reviewController.js");
 
 const upload = require("../../middleware/review/uploadImage.js");
 
+router.get("/getAllReviews", getAllReviewController);
 router.post("/createReview", upload.array("image", 4), uploadReviewController);
-// router.get("/reviewDetail", upload.array("image", 4), uploadReviewController);
 
 module.exports = router;
