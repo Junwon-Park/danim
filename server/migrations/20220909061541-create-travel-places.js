@@ -22,6 +22,9 @@ module.exports = {
       place_region3: {
         type: Sequelize.STRING(35),
       },
+      place_description: {
+        type: Sequelize.TEXT,
+      },
       issued_place: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Specialty_images.init(
     {
       specialty_id: { type: DataTypes.BIGINT, allowNull: false },
-      specialty_image: DataTypes.STRING(100),
+      specialty_image: DataTypes.STRING,
     },
     {
       sequelize,

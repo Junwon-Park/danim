@@ -8,7 +8,9 @@ const helmet = require("helmet");
 const { config } = require("./serverConfig");
 const PORT = config.PORT;
 
-const reviewRouter = require("./router/review/reviewRouter.js");
+// Import Router
+const reviewRouter = require("./router/reviewRouter.js");
+const travelRouter = require("./router/travelRouter.js");
 
 // const whiteListByCors = [
 //   'https://aws.amazon.com'
@@ -43,7 +45,9 @@ app.get("/", (req, res) => {
   res.status(200).send("connect!!!");
 });
 
+// Router
 app.use("/review", reviewRouter);
+app.use("/travel", travelRouter);
 
 server = app.listen(PORT, () => {
   console.log(`HTTP server running on port ${PORT} successfully!!!`);

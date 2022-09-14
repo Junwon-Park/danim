@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       place_region1: { type: DataTypes.STRING(10), allowNull: false },
       place_region2: { type: DataTypes.STRING(10), allowNull: false },
       place_region3: DataTypes.STRING(35),
+      place_description: DataTypes.TEXT,
       issued_place: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

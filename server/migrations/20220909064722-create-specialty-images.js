@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       specialty_image: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

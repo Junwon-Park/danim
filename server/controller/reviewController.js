@@ -1,4 +1,4 @@
-const { Reviews } = require("../../models");
+const { Reviews } = require("../models");
 
 const uploadReviewController = async (req, res) => {
   const reviewData = req.body;
@@ -29,9 +29,8 @@ const uploadReviewController = async (req, res) => {
 };
 
 const getAllReviewController = async (req, res) => {
-  const AllReviews = await Reviews.findAll();
+  const AllReviews = await Reviews.findAll({ order: [["createdAt", "desc"]] });
 
-  console.log(AllReviews);
   res.json({ data: AllReviews });
 };
 
