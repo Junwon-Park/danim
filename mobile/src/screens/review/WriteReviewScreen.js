@@ -86,7 +86,7 @@ const WriteReviewScreen = ({ route, navigation }) => {
       data.type = "image/jpeg";
       formdata.append("image", data);
     });
-    formdata.append("user_id", 2);
+    formdata.append("user_id", 3);
     formdata.append("description", reviewDescription);
 
     const restApi = "http://10.0.2.2:8080/review/createReview";
