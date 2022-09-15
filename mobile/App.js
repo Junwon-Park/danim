@@ -10,6 +10,8 @@ import AllReviewListScreen from "./src/screens/review/AllReviewListScreen";
 import WriteReviewScreen from "./src/screens/review/WriteReviewScreen";
 import ReviewDetailScreen from "./src/screens/review/ReviewDetailScreen";
 import MainScreen from "./src/screens/MainScreen";
+import RecommandedTravelScreen from "./src/screens/travel/RecommandedTravelScreen";
+import TravelDetailScreen from "./src/screens/travel/TravelDetailScreen";
 // import ReviewDetail from "./src/screens/review/ReviewDetail";
 // import SignInScreen from "./src/screens/SignInScreen/SignInScreens";
 
@@ -38,6 +40,39 @@ const ReviewStackNavigator = () => {
   );
 };
 
+const TravelStackNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleAlign: "center",
+        headerTitleStyle: { fontWeight: "bold", fontSize: 28 },
+      }}
+    >
+      <Stack.Screen
+        name="mainScreen"
+        component={MainScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
+      <Stack.Screen
+        name="recommandedTravelScreen"
+        component={RecommandedTravelScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
+      <Stack.Screen
+        name="travelDetailScreen"
+        component={TravelDetailScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 /** root component */
 const App = () => {
   return (
@@ -45,8 +80,9 @@ const App = () => {
       <Tab.Navigator sceneContainerStyle={{ backgroundColor: "#ffffff" }}>
         <Tab.Screen
           name="Home"
-          component={MainScreen}
+          component={TravelStackNavigator}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <AntDesign name="home" size={size} color={color} />
             ),

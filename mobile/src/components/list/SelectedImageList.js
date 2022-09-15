@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const SelectedImageList = ({ selectedImages }) => {
+const SelectedImageList = ({ context, selectedImages }) => {
   console.log("selected image list", selectedImages);
   return (
     <>
-      <Text style={styles.text}>파일</Text>
+      <Text style={styles.text}>{context}</Text>
       <View style={styles.container}>
         {selectedImages.map((el) => {
           const filename = el.uri.split("/").pop();

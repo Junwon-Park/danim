@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { StyleSheet, View, Alert, ScrollView, Image } from "react-native";
-import { CommonActions, StackActions } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios";
 
@@ -62,7 +61,7 @@ const WriteReviewScreen = ({ route, navigation }) => {
     const libraryImage = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsMultipleSelection: true,
-      // allowsEditing: true,
+      // allowsEditing: true, // allwoMultipleSelection: true 불가(Default === false)
       aspect: [4, 3],
       quality: 0.5,
     });
@@ -99,6 +98,7 @@ const WriteReviewScreen = ({ route, navigation }) => {
       .catch((err) => console.error(err));
     console.log("Result data!!!!", result.data.data);
     const userData = result.data.data;
+    // Delete stacks
     navigation.reset({
       routes: [
         {
@@ -110,7 +110,6 @@ const WriteReviewScreen = ({ route, navigation }) => {
         },
       ],
     });
-    // navigation.navigate("reviewDetail", { userData: result.data.data });
   };
 
   return (
@@ -119,7 +118,7 @@ const WriteReviewScreen = ({ route, navigation }) => {
         <TinyButton type={"camera"} onPress={imageButtonHandler} />
         <TinyButton type={"gallery"} onPress={takeImageHandler} />
       </View>
-      <SelectedImageList selectedImages={selectedImages} />
+      <SelectedImageList context={"파일"} selectedImages={selectedImages} />
       <DefaultInput
         label={"내용"}
         defaultInputConfig={{ ...defaultInputConfig }}

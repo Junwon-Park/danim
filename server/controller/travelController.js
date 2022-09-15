@@ -1,12 +1,12 @@
-const { sequelize } = require("../models");
+const { sequelize, Travel_places, Place_images } = require("../models");
 
 const getTravelDetailController = async (req, res) => {
-  const travelId = req.body.travelId;
+  const travelId = req.query.travelId;
 
   const travelDetail = await sequelize.query(
-    `SELECT * FROM Travel_places tp JOIN Place_images pi2 
-    ON tp.id = pi2.place_id JOIN Local_specialties ls 
-    ON tp.id = ls.place_id JOIN Specialty_images si 
+    `SELECT * FROM Travel_places tp JOIN Place_images pi2
+    ON tp.id = pi2.place_id JOIN Local_specialties ls
+    ON tp.id = ls.place_id JOIN Specialty_images si
     ON ls.id = si.specialty_id WHERE tp.id = ${travelId}`,
     { nest: true, type: sequelize.QueryTypes.SELECT }
   );
@@ -14,4 +14,12 @@ const getTravelDetailController = async (req, res) => {
   res.json({ Message: "OK", data: { travelDetail } });
 };
 
-module.exports = { getTravelDetailController };
+const getAllTravelsController = async (req, res) => {
+  const allTravels = await Travel_places.findAll({
+    include: [{ model: Place_images }],
+  });
+
+  res.json({ Message: "OK", data: allTravels });
+};
+
+module.exports = { getTravelDetailController, getAllTravelsController };
