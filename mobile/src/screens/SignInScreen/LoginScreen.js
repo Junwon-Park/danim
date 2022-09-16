@@ -28,6 +28,10 @@ const LoginScreen = () => {
   const OnForgotPasswordPressed = () => {
     console.log("비밀번호 찾기");
   };
+  /** 회원가입 찾기 */
+  const OnSignUpPressed = () => {
+    console.log("회원가입");
+  };
 
   return (
     <View style={styles.root}>
@@ -47,7 +51,16 @@ const LoginScreen = () => {
         secureTextEntry={true}
       />
 
-      <CustomButton text="로그인" onPress={onSignInPressed} />
+      <CustomButton text="로그인"
+        onPress={onSignInPressed}
+      />
+
+
+      <CustomButton
+        text="회원가입"
+        onPress={OnSignUpPressed}
+      />
+
 
       {/** 커스텀 버튼 type으로 조건 넣은 것임 */}
       <CustomButton
@@ -61,6 +74,7 @@ const LoginScreen = () => {
         onPress={OnForgotPasswordPressed}
         type="TERTIARY"
       />
+
     </View>
   );
 };
