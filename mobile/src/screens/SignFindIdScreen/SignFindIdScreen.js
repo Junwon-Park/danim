@@ -4,9 +4,9 @@ import { StyleSheet, Image, Text, View } from "react-native";
 
 import CustomInput from "../../components/CustomInput/CustomInput";
 import CustomButton from "../../components/CustomButton/CustomButton";
+import LoginScreen from "../SignInScreen/LoginScreen";
 
 const SignUpScreen = ({navigation}) => {
-
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -17,16 +17,14 @@ const SignUpScreen = ({navigation}) => {
       },
     });
   }, [navigation]);
+  
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [repassword, setRePassword] = useState("");
-  const [userage, setUserage] = useState("");
-  const [usergender, setUsergender] = useState("");
 
     /** 로그인 */
-    const moveLoginHandler = () => {
-      navigation.navigate("SignUpScreen");
+    const moveSignFindHandler = () => {
+      navigation.navigate("SignFindIdScreen");
     };
   
   
@@ -43,25 +41,9 @@ const SignUpScreen = ({navigation}) => {
         setValue={setPassword}
         secureTextEntry={true}
       />
-      <CustomInput
-        placeholder="재확인 비밀번호를 입력하세요."
-        value={repassword}
-        setValue={setRePassword}
-        secureTextEntry={true}
-      />
-      <CustomInput
-        placeholder="나이를 입력하세요."
-        value={userage}
-        setValue={setUserage}
-      />
-      <CustomInput
-        placeholder="성별을 입력하세요."
-        value={usergender}
-        setValue={setUsergender}
-      />
       <CustomButton
-        text="가입하기"
-        onPress={moveLoginHandler}
+        text="로그인"
+        onPress={LoginScreen}
       />
     </View>
   );
