@@ -104,3 +104,14 @@ const App = () => {
 };
 
 export default App;
+
+
+{/* <NavigationContainer>
+<Stack.Navigator>
+  <Stack.Screen name="로그인" component={LoginScreen}/>
+  <Stack.Screen name="회원가입" component={SingUpScreen}/>   
+  <Stack.Screen name="추천 목록입니다." component={CategoriesScreen}/>
+  <Stack.Screen name="Overview" component={MealsOverviewScreen}/>
+</Stack.Navigator>
+</NavigationContainer>
+</> */}
