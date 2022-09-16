@@ -19,11 +19,19 @@ const TravelDetailScreen = ({ route }) => {
         travelId: id,
       },
     });
-    console.log("TravelDatails", specialtyData.data.data.travelDetail);
   };
   useEffect(() => {
     initRequest();
   }, []);
+
+  const {
+    specialty_description,
+    specialty_id,
+    specialty_image,
+    specialty_name,
+  } = specialtyData.data.data.travelDetail[0];
+
+  console.log();
 
   const placeImage = Place_images[0].place_image;
 

@@ -5,15 +5,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 
-// Components
+// Screens
 import AllReviewListScreen from "./src/screens/review/AllReviewListScreen";
 import WriteReviewScreen from "./src/screens/review/WriteReviewScreen";
 import ReviewDetailScreen from "./src/screens/review/ReviewDetailScreen";
 import MainScreen from "./src/screens/MainScreen";
 import RecommandedTravelScreen from "./src/screens/travel/RecommandedTravelScreen";
 import TravelDetailScreen from "./src/screens/travel/TravelDetailScreen";
+import LoginScreen from "./src/screens/SignInScreen/LoginScreen";
+import SingUpScreen from "./src/screens/SignUpScreen/SignUpScreen";
 // import ReviewDetail from "./src/screens/review/ReviewDetail";
-// import SignInScreen from "./src/screens/SignInScreen/SignInScreens";
 
 // Navigator
 const Stack = createNativeStackNavigator();
@@ -69,6 +70,20 @@ const TravelStackNavigator = () => {
           contentStyle: { backgroundColor: "#ffffff" },
         }}
       />
+      <Stack.Screen
+        name="loginScreen"
+        component={LoginScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
+      <Stack.Screen
+        name="signInScreen"
+        component={SingUpScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -104,14 +119,3 @@ const App = () => {
 };
 
 export default App;
-
-
-{/* <NavigationContainer>
-<Stack.Navigator>
-  <Stack.Screen name="로그인" component={LoginScreen}/>
-  <Stack.Screen name="회원가입" component={SingUpScreen}/>   
-  <Stack.Screen name="추천 목록입니다." component={CategoriesScreen}/>
-  <Stack.Screen name="Overview" component={MealsOverviewScreen}/>
-</Stack.Navigator>
-</NavigationContainer>
-</> */}
