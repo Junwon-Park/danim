@@ -21,13 +21,14 @@ const RecommandedTravelScreen = ({ route, navigation }) => {
   const initRequest = async () => {
     const allTravelData = await axios.get(restApi);
     setRecommandedTravelData(allTravelData.data.data);
-    console.log("All Travel Data!!!!!", allTravelData.data.data);
+    // console.log("All Travel Data!!!!!", allTravelData.data.data);
   };
   useEffect(() => {
     initRequest();
   }, []);
 
   const renderTravelList = (itemData) => {
+    console.log("itemData", itemData.item);
     const navigateTravelDetailHandler = () => {
       navigation.navigate("travelDetailScreen", { travelData: itemData.item });
     };

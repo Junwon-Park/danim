@@ -8,6 +8,7 @@ import {
 
 const TravelItem = ({ travelData, onPress }) => {
   const { Place_images } = travelData;
+  // console.log("Travels!!!", travelData);
 
   return (
     <View style={styles.cardContainer}>
@@ -22,11 +23,7 @@ const TravelItem = ({ travelData, onPress }) => {
           <Text style={styles.titleText}>{travelData.place_name}</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Pressable
-            style={styles.textContainer}
-            onPress={onPress}
-            android_ripple={{ color: "#cccccc" }}
-          >
+          <Pressable onPress={onPress} android_ripple={{ color: "#cccccc" }}>
             <Text style={styles.buttonText}>자세히 보기</Text>
           </Pressable>
         </View>

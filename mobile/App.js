@@ -14,6 +14,7 @@ import RecommandedTravelScreen from "./src/screens/travel/RecommandedTravelScree
 import TravelDetailScreen from "./src/screens/travel/TravelDetailScreen";
 import LoginScreen from "./src/screens/SignInScreen/LoginScreen";
 import SingUpScreen from "./src/screens/SignUpScreen/SignUpScreen";
+import SpecialtyDetailScreen from "./src/screens/specialtyScreens/SpecialtyDetailScreen";
 // import ReviewDetail from "./src/screens/review/ReviewDetail";
 
 // Navigator
@@ -66,6 +67,13 @@ const TravelStackNavigator = () => {
       <Stack.Screen
         name="travelDetailScreen"
         component={TravelDetailScreen}
+        options={{
+          contentStyle: { backgroundColor: "#ffffff" },
+        }}
+      />
+      <Stack.Screen
+        name="specialtyDetailScreen"
+        component={SpecialtyDetailScreen}
         options={{
           contentStyle: { backgroundColor: "#ffffff" },
         }}
