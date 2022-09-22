@@ -1,5 +1,3 @@
-// import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -12,10 +10,7 @@ import ReviewDetailScreen from "./src/screens/review/ReviewDetailScreen";
 import MainScreen from "./src/screens/MainScreen";
 import RecommandedTravelScreen from "./src/screens/travel/RecommandedTravelScreen";
 import TravelDetailScreen from "./src/screens/travel/TravelDetailScreen";
-import LoginScreen from "./src/screens/SignInScreen/LoginScreen";
-import SingUpScreen from "./src/screens/SignUpScreen/SignUpScreen";
-import SpecialtyDetailScreen from "./src/screens/specialtyScreens/SpecialtyDetailScreen";
-// import ReviewDetail from "./src/screens/review/ReviewDetail";
+import SpecialtyDetailScreen from "./src/screens/specialtyScreen/SpecialtyDetailScreen";
 
 // Navigator
 const Stack = createNativeStackNavigator();
@@ -78,25 +73,10 @@ const TravelStackNavigator = () => {
           contentStyle: { backgroundColor: "#ffffff" },
         }}
       />
-      <Stack.Screen
-        name="loginScreen"
-        component={LoginScreen}
-        options={{
-          contentStyle: { backgroundColor: "#ffffff" },
-        }}
-      />
-      <Stack.Screen
-        name="signInScreen"
-        component={SingUpScreen}
-        options={{
-          contentStyle: { backgroundColor: "#ffffff" },
-        }}
-      />
     </Stack.Navigator>
   );
 };
 
-/** root component */
 const App = () => {
   return (
     <NavigationContainer>

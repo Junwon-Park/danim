@@ -1,4 +1,9 @@
-const { sequelize, Travel_places, Place_images } = require("../models");
+const {
+  sequelize,
+  Travel_places,
+  Place_images,
+  Traveled_records,
+} = require("../models");
 
 const getTravelDetailController = async (req, res) => {
   const travelId = req.query.travelId;
@@ -22,4 +27,21 @@ const getAllTravelsController = async (req, res) => {
   res.json({ Message: "OK", data: allTravels });
 };
 
-module.exports = { getTravelDetailController, getAllTravelsController };
+const createTraveledRecord = async (req, res) => {
+  const { id, place_id, user_id, place_description, traveled_date } = req.body;
+  const insertedRecord = await Traveled_records.create({
+    id,
+    place_id,
+    user_id,
+    place_description,
+    traveled_date,
+  });
+  console.log("resutl", insertedRecord);
+  res.json({ Message: "OK" });
+};
+
+module.exports = {
+  getTravelDetailController,
+  getAllTravelsController,
+  createTraveledRecord,
+};

@@ -15,6 +15,7 @@ const SpecialtyDetailScreen = ({ route, navigation }) => {
       },
     });
   }, [navigation]);
+
   return (
     <View>
       <View style={styles.imageContainer}>

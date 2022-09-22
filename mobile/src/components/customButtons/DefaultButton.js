@@ -1,17 +1,17 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
 
-const DefaultButton = ({ width, title, onPress }) => {
+const DefaultButton = ({ marginBottom, width, title, onPress }) => {
   return (
-    <View style={[styles.container, width]}>
-      <View style={styles.textContainer}>
-        <Pressable
-          style={styles.pressable}
-          onPress={onPress}
-          android_ripple={{ color: "#cccccc" }}
-        >
+    <View style={[styles.container, width, marginBottom]}>
+      <Pressable
+        style={styles.pressable}
+        onPress={onPress}
+        android_ripple={{ color: "#cccccc" }}
+      >
+        <View style={styles.textContainer}>
           <Text style={styles.text}>{title}</Text>
-        </Pressable>
-      </View>
+        </View>
+      </Pressable>
     </View>
   );
 };
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     padding: 8,
     marginTop: 40,
   },
-  innerContainer: {},
   pressable: {
     width: "100%",
     alignItems: "center",

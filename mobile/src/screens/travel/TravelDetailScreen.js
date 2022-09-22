@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 // Components
 import SpecialtyItem from "../../components/cards/SpecialtyItem";
 import MediumTitle from "../../components/title/MediumTitle";
-// import TravelDetailList from "../../components/list/TravelDetailList";
+import DefaultButton from "../../components/customButtons/DefaultButton";
 
 const TravelDetailScreen = ({ route, navigation }) => {
   const [specialtyState, setSpecialtyState] = useState([]);
@@ -19,10 +19,31 @@ const TravelDetailScreen = ({ route, navigation }) => {
     place_description,
     Place_images,
   } = route.params.travelData;
-  console.log("TravelId!!!", id);
+
+  const moveTravel = async () => {
+    // navigation.navigate("");
+    const restApi = "http://10.0.2.2:8080/travel/createTraveledRecord";
+    const result = await axios.post(restApi, {
+      place_id: id,
+      user_id: 2,
+      place_description,
+      traveled_date: new Date(),
+    });
+    console.log("moveTravel", result.data.Message);
+    // if(!result) a
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       title: `${place_name}`,
+      headerRight: () => (
+        <DefaultButton
+          marginBottom={{ marginBottom: 35 }}
+          title={"여행 가기"}
+          onPress={moveTravel}
+        />
+      ),
+
       contentStyle: {
         backgroundColor: "white",
       },
@@ -36,7 +57,7 @@ const TravelDetailScreen = ({ route, navigation }) => {
         travelId: id,
       },
     });
-    // console.log("detail!!!", specialtyData.data.data.travelDetail);
+
     const datas = specialtyData.data.data.travelDetail;
     const dataArray = [];
     datas.forEach((element) => {
@@ -72,7 +93,6 @@ const TravelDetailScreen = ({ route, navigation }) => {
       style={{
         height: "100%",
         width: "100%",
-        borderWidth: 1,
         alignItems: "center",
       }}
     >
